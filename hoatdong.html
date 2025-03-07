@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoạt Động Sinh Viên - Trường Đại Học</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .activity-hero {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+        
+        .activity-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+            transition: all 0.5s ease;
+        }
+        
+        .activity-hero:hover img {
+            filter: brightness(0.9);
+            transform: scale(1.05);
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            width: 80%;
+        }
+        
+        .hero-content h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .activity-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        
+        .activity-card.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .activity-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .activity-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .activity-content {
+            padding: 20px;
+        }
+        
+        .activity-content h4 {
+            color: #FF8C00;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .activity-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .activity-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #f8f8f8;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .activity-date {
+            display: flex;
+            align-items: center;
+        }
+        
+        .activity-date i {
+            margin-right: 5px;
+            color: #FF8C00;
+        }
+        
+        .activity-location {
+            display: flex;
+            align-items: center;
+        }
+        
+        .activity-location i {
+            margin-right: 5px;
+            color: #FF8C00;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #FFE4B5;
+            color: #FF8C00;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .activity-gallery {
+            margin-top: 50px;
+        }
+        
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 0;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .gallery-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .gallery-container::-webkit-scrollbar-thumb {
+            background: #FF8C00;
+            border-radius: 10px;
+        }
+        
+        .gallery-item {
+            min-width: 300px;
+            height: 200px;
+            margin-right: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.8);
+        }
+        
+        .gallery-item .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover .caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .gallery-control {
+            background: #FF8C00;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(255,140,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-control:hover {
+            background: #e67e00;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="Logo trường đại học"></a>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="daotao.html">Đào tạo</a></li>
+            <li><a href="hoatdong.html">Hoạt động</a></li>
+            <li><a href="tuyensinh.html">Tuyển sinh</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+        <div class="search">
+            <form action="" method="get">
+                <input type="text" placeholder="Tìm kiếm..." required>
+                <button type="submit"><i class="fas fa-search"></i> Tìm kiếm</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="activity-hero">
+            <img src="img1.jpg" alt="Hoạt động sinh viên">
+            <div class="hero-content">
+                <h2>HOẠT ĐỘNG SINH VIÊN</h2>
+                <p>Khám phá và tham gia các hoạt động ngoại khóa phong phú tại Trường Đại học Việt Nam</p>
+            </div>
+        </div>
+        
+        <h3>SỰ KIỆN SẮP DIỄN RA</h3>
+        <div class="activity-grid">
+            <div class="activity-card">
+                <img src="img1.jpg" alt="Ngày hội việc làm">
+                <div class="activity-content">
+                    <h4>Ngày hội việc làm 2024</h4>
+                    <p>Cơ hội kết nối với hơn 50 doanh nghiệp hàng đầu và tìm kiếm cơ hội việc làm, thực tập.</p>
+                    <div class="tags">
+                        <span class="tag">Việc làm</span>
+                        <span class="tag">Thực tập</span>
+                        <span class="tag">Kết nối</span>
+                    </div>
+                </div>
+                <div class="activity-meta">
+                    <div class="activity-date">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>15/06/2024</span>
+                    </div>
+                    <div class="activity-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Hội trường A</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <img src="img2.jpg" alt="Cuộc thi">
+                <div class="activity-content">
+                    <h4>Cuộc thi Sáng tạo Công nghệ</h4>
+                    <p>Thể hiện ý tưởng và giải pháp công nghệ sáng tạo của bạn với tổng giá trị giải thưởng lên đến 100 triệu đồng.</p>
+                    <div class="tags">
+                        <span class="tag">Công nghệ</span>
+                        <span class="tag">Sáng tạo</span>
+                        <span class="tag">Giải thưởng</span>
+                    </div>
+                </div>
+                <div class="activity-meta">
+                    <div class="activity-date">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>20/07/2024</span>
+                    </div>
+                    <div class="activity-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Khu Công nghệ</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <img src="img3.jpg" alt="Văn nghệ">
+                <div class="activity-content">
+                    <h4>Đêm nhạc Chào tân sinh viên</h4>
+                    <p>Đêm nhạc đặc biệt chào đón tân sinh viên khóa 2024 với sự tham gia của các ca sĩ nổi tiếng.</p>
+                    <div class="tags">
+                        <span class="tag">Âm nhạc</span>
+                        <span class="tag">Giao lưu</span>
+                        <span class="tag">Tân sinh viên</span>
+                    </div>
+                </div>
+                <div class="activity-meta">
+                    <div class="activity-date">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>10/09/2024</span>
+                    </div>
+                    <div class="activity-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Sân vận động</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>HOẠT ĐỘNG NỔI BẬT</h3>
+        <div class="activity-gallery">
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="img1.jpg" alt="Hoạt động 1">
+                    <div class="caption">Hội thảo khoa học 2023</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img2.jpg" alt="Hoạt động 2">
+                    <div class="caption">Ngày hội thể thao sinh viên</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img3.jpg" alt="Hoạt động 3">
+                    <div class="caption">Chương trình tình nguyện mùa hè xanh</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img1.jpg" alt="Hoạt động 4">
+                    <div class="caption">Cuộc thi tài năng sinh viên</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img2.jpg" alt="Hoạt động 5">
+                    <div class="caption">Lễ hội văn hóa quốc tế</div>
+                </div>
+            </div>
+            <div class="gallery-controls">
+                <div class="gallery-control prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="gallery-control next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <div class="footer">
+        <p>Trường Đại học Việt Nam</p>
+        <p>Địa chỉ: 123 Đường Nguyễn Văn A, Quận 1, TP.HCM</p>
+        <p>Điện thoại: 028.1234.5678 | Email: info@university.edu.vn</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Activity card animation
+        const activityCards = document.querySelectorAll('.activity-card');
+        
+        const revealCards = () => {
+            activityCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('active');
+                }, index * 200);
+            });
+        };
+        
+        // Gallery controls
+        const galleryContainer = document.querySelector('.gallery-container');
+        const prevBtn = document.querySelector('.gallery-control.prev');
+        const nextBtn = document.querySelector('.gallery-control.next');
+        
+        prevBtn.addEventListener('click', () => {
+            galleryContainer.scrollBy({
+                left: -350,
+                behavior: 'smooth'
+            });
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            galleryContainer.scrollBy({
+                left: 350,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Run animations when page loads
+        window.addEventListener('load', revealCards);
+    </script>
+</body>
+</html> 

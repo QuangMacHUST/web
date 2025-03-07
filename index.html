@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trường Đại học - Trang chủ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="Logo trường đại học"></a>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="daotao.html">Đào tạo</a></li>
+            <li><a href="hoatdong.html">Hoạt động</a></li>
+            <li><a href="tuyensinh.html">Tuyển sinh</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+        <div class="search">
+            <form action="" method="get">
+                <input type="text" placeholder="Tìm kiếm..." required>
+                <button type="submit"><i class="fas fa-search"></i> Tìm kiếm</button>
+            </form>
+        </div>
+    </div>
+    <div class="banner">
+        <img src="banner.jpg" alt="Banner trường đại học">
+    </div>
+    <h3>TIN TỨC HỌC TẬP</h3>
+    <div class="list">
+        <div class="news">
+            <h4>Lễ trao bằng tốt nghiệp</h4>
+            <img src="img1.jpg" alt="Lễ trao bằng">
+            <p>Trường Đại học vừa tổ chức thành công lễ trao bằng tốt nghiệp cho sinh viên khóa 2020-2024 với hơn 1000 sinh viên tốt nghiệp loại giỏi.</p>
+            <a href="chitiet.html" class="read-more">Xem thêm <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="news">
+            <h4>Hội thảo khoa học</h4>
+            <img src="img2.jpg" alt="Hội thảo khoa học">
+            <p>Hội thảo khoa học quốc tế về công nghệ thông tin và trí tuệ nhân tạo với sự tham gia của các chuyên gia hàng đầu từ các quốc gia.</p>
+            <a href="chitiet.html" class="read-more">Xem thêm <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="news">
+            <h4>Tuyển sinh năm 2024</h4>
+            <img src="img3.jpg" alt="Tuyển sinh">
+            <p>Thông tin tuyển sinh năm học 2024-2025 với nhiều ngành học mới và chính sách học bổng hấp dẫn dành cho các tân sinh viên.</p>
+            <a href="tuyensinh.html" class="read-more">Xem thêm <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+    <h3>HOẠT ĐỘNG SINH VIÊN</h3>
+    <div class="list">
+        <div class="news">
+            <h4>Cuộc thi sáng tạo</h4>
+            <img src="img1.jpg" alt="Cuộc thi sáng tạo">
+            <p>Cuộc thi sáng tạo công nghệ năm 2024 dành cho sinh viên với tổng giá trị giải thưởng lên đến 100 triệu đồng.</p>
+            <a href="hoatdong.html" class="read-more">Xem thêm <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="news">
+            <h4>Câu lạc bộ sinh viên</h4>
+            <img src="img2.jpg" alt="Câu lạc bộ">
+            <p>Giới thiệu các câu lạc bộ sinh viên đang hoạt động tại trường và cách thức đăng ký tham gia dành cho tân sinh viên.</p>
+            <a href="hoatdong.html" class="read-more">Xem thêm <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="news">
+            <h4>Tình nguyện hè</h4>
+            <img src="img3.jpg" alt="Tình nguyện hè">
+            <p>Chương trình tình nguyện hè năm 2024 với nhiều hoạt động ý nghĩa tại các tỉnh thành trên cả nước.</p>
+            <a href="hoatdong.html" class="read-more">Xem thêm <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+  
+    <div class="footer">
+        <p>Trường Đại học Việt Nam</p>
+        <p>Địa chỉ: 123 Đường Nguyễn Văn A, Quận 1, TP.HCM</p>
+        <p>Điện thoại: 028.1234.5678 | Email: info@university.edu.vn</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.news');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Initial opacity for smooth animation
+        document.querySelectorAll('.news').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.5s ease-out';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>

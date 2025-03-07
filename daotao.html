@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đào Tạo - Trường Đại Học</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .education-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .education-card h4 {
+            color: #FF8C00;
+            font-size: 22px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #FF8C00;
+            padding-bottom: 10px;
+        }
+        .education-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: #FF8C00;
+        }
+        .program {
+            padding: 15px;
+            border-bottom: 1px dashed #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .program:last-child {
+            border-bottom: none;
+        }
+        .program h5 {
+            font-size: 18px;
+            color: #333;
+            margin: 0;
+        }
+        .program p {
+            color: #666;
+            margin: 10px 0;
+        }
+        .program-icon {
+            color: #FF8C00;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        .detail-button {
+            background: #FF8C00;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        .detail-button i {
+            margin-left: 5px;
+        }
+        .detail-button:hover {
+            background: #e67e00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+        }
+        .faculty-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .faculty-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+            object-fit: cover;
+            border: 3px solid #FF8C00;
+        }
+        .admission-details {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 5px;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="Logo trường đại học"></a>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="daotao.html">Đào tạo</a></li>
+            <li><a href="hoatdong.html">Hoạt động</a></li>
+            <li><a href="tuyensinh.html">Tuyển sinh</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+        <div class="search">
+            <form action="" method="get">
+                <input type="text" placeholder="Tìm kiếm..." required>
+                <button type="submit"><i class="fas fa-search"></i> Tìm kiếm</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <h1 class="page-title">CHƯƠNG TRÌNH ĐÀO TẠO</h1>
+        
+        <div class="education-card">
+            <h4>KHOA CÔNG NGHỆ THÔNG TIN</h4>
+            <div class="faculty-info">
+                <img src="img1.jpg" alt="Trưởng khoa" class="faculty-img">
+                <div>
+                    <h5>TS. Nguyễn Văn A</h5>
+                    <p>Trưởng khoa Công nghệ thông tin</p>
+                </div>
+            </div>
+            <div class="program">
+                <div>
+                    <h5><i class="fas fa-laptop-code program-icon"></i> Công nghệ phần mềm</h5>
+                    <p>Chuyên sâu về phát triển phần mềm, kiểm thử, quy trình phát triển linh hoạt.</p>
+                    <div class="admission-details">
+                        <i class="fas fa-info-circle"></i> Điểm chuẩn năm 2023: 25.75 điểm
+                    </div>
+                </div>
+                <a href="#" class="detail-button">Chi tiết <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="program">
+                <div>
+                    <h5><i class="fas fa-database program-icon"></i> Hệ thống thông tin</h5>
+                    <p>Chuyên sâu về thiết kế, xây dựng và quản trị các hệ thống thông tin doanh nghiệp.</p>
+                    <div class="admission-details">
+                        <i class="fas fa-info-circle"></i> Điểm chuẩn năm 2023: 24.80 điểm
+                    </div>
+                </div>
+                <a href="#" class="detail-button">Chi tiết <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="program">
+                <div>
+                    <h5><i class="fas fa-robot program-icon"></i> Trí tuệ nhân tạo</h5>
+                    <p>Chương trình mới với các kiến thức hiện đại về AI, Machine Learning và Deep Learning.</p>
+                    <div class="admission-details">
+                        <i class="fas fa-info-circle"></i> Điểm chuẩn năm 2023: 26.50 điểm
+                    </div>
+                </div>
+                <a href="#" class="detail-button">Chi tiết <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        
+        <div class="education-card">
+            <h4>KHOA KINH TẾ</h4>
+            <div class="faculty-info">
+                <img src="img2.jpg" alt="Trưởng khoa" class="faculty-img">
+                <div>
+                    <h5>PGS.TS. Trần Thị B</h5>
+                    <p>Trưởng khoa Kinh tế</p>
+                </div>
+            </div>
+            <div class="program">
+                <div>
+                    <h5><i class="fas fa-chart-line program-icon"></i> Tài chính - Ngân hàng</h5>
+                    <p>Đào tạo chuyên sâu về phân tích tài chính, quản lý đầu tư và hoạt động ngân hàng.</p>
+                    <div class="admission-details">
+                        <i class="fas fa-info-circle"></i> Điểm chuẩn năm 2023: 25.10 điểm
+                    </div>
+                </div>
+                <a href="#" class="detail-button">Chi tiết <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="program">
+                <div>
+                    <h5><i class="fas fa-briefcase program-icon"></i> Quản trị kinh doanh</h5>
+                    <p>Đào tạo về quản lý doanh nghiệp, marketing, và chiến lược kinh doanh toàn cầu.</p>
+                    <div class="admission-details">
+                        <i class="fas fa-info-circle"></i> Điểm chuẩn năm 2023: 24.95 điểm
+                    </div>
+                </div>
+                <a href="#" class="detail-button">Chi tiết <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+  
+    <div class="footer">
+        <p>Trường Đại học Việt Nam</p>
+        <p>Địa chỉ: 123 Đường Nguyễn Văn A, Quận 1, TP.HCM</p>
+        <p>Điện thoại: 028.1234.5678 | Email: info@university.edu.vn</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animation on scroll
+        const cards = document.querySelectorAll('.education-card');
+        const programs = document.querySelectorAll('.program');
+        
+        const fadeInElements = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        const observer = new IntersectionObserver(fadeInElements, {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px'
+        });
+        
+        programs.forEach((program, index) => {
+            program.style.opacity = 0;
+            program.style.transform = 'translateY(20px)';
+            program.style.transition = `all 0.5s ease ${index * 0.2}s`;
+            observer.observe(program);
+        });
+    </script>
+</body>
+</html> 

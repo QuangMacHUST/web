@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuyển Sinh - Trường Đại Học</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admission-banner {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+        
+        .admission-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+            animation: zoomEffect 20s infinite alternate;
+        }
+        
+        @keyframes zoomEffect {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            width: 80%;
+        }
+        
+        .banner-content h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .banner-content p {
+            font-size: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .banner-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #FF8C00;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .banner-button:hover {
+            background: #e67e00;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .admission-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .timeline {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .timeline-container {
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: #FF8C00;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -43px;
+            top: 20px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #FF8C00;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.3);
+        }
+        
+        .timeline-date {
+            font-size: 18px;
+            color: #FF8C00;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .admission-requirements {
+            flex: 1;
+            min-width: 300px;
+            animation: fadeIn 1s ease-in-out;
+            animation-delay: 0.3s;
+        }
+        
+        .requirement-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border-left: 5px solid #FF8C00;
+        }
+        
+        .requirement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .requirement-card h4 {
+            display: flex;
+            align-items: center;
+            color: #FF8C00;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .requirement-card h4 i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .requirement-card ul {
+            padding-left: 20px;
+        }
+        
+        .requirement-card li {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        
+        .requirement-card li::marker {
+            color: #FF8C00;
+        }
+        
+        .contact-section {
+            background: linear-gradient(45deg, #FF8C00, #FFD700);
+            padding: 40px;
+            border-radius: 10px;
+            color: white;
+            margin-top: 50px;
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3);
+            animation: fadeIn 1s ease-in-out;
+            animation-delay: 0.6s;
+        }
+        
+        .contact-section h3 {
+            color: white;
+            text-align: left;
+            margin-top: 0;
+            font-size: 28px;
+        }
+        
+        .contact-section h3::after {
+            background: white;
+            margin: 10px 0;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-item i {
+            font-size: 24px;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+        .contact-item div h4 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        
+        .contact-item div p {
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .faq-section {
+            margin-top: 50px;
+            animation: fadeIn 1s ease-in-out;
+            animation-delay: 0.9s;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: #f9f9f9;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question h4 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .faq-question i {
+            color: #FF8C00;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+            padding: 10px 0;
+        }
+        
+        .faq-item.active .faq-question {
+            background: #FF8C00;
+        }
+        
+        .faq-item.active .faq-question h4,
+        .faq-item.active .faq-question i {
+            color: white;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="Logo trường đại học"></a>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="daotao.html">Đào tạo</a></li>
+            <li><a href="hoatdong.html">Hoạt động</a></li>
+            <li><a href="tuyensinh.html">Tuyển sinh</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+        <div class="search">
+            <form action="" method="get">
+                <input type="text" placeholder="Tìm kiếm..." required>
+                <button type="submit"><i class="fas fa-search"></i> Tìm kiếm</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="admission-banner">
+            <img src="img1.jpg" alt="Tuyển sinh">
+            <div class="banner-content">
+                <h2>TUYỂN SINH ĐẠI HỌC 2024</h2>
+                <p>Mở cánh cửa tương lai với các chương trình đào tạo chất lượng cao tại Trường Đại học Việt Nam</p>
+                <a href="#" class="banner-button">Đăng ký ngay <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        
+        <div class="admission-info">
+            <div class="timeline">
+                <h3>LỊCH TRÌNH TUYỂN SINH</h3>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-date">01/03/2024 - 30/04/2024</div>
+                        <div class="timeline-content">
+                            <h4>Đăng ký nguyện vọng</h4>
+                            <p>Thí sinh đăng ký nguyện vọng xét tuyển trên cổng thông tin của Bộ Giáo dục và Đào tạo.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">07/07/2024 - 08/07/2024</div>
+                        <div class="timeline-content">
+                            <h4>Kỳ thi THPT Quốc gia</h4>
+                            <p>Thí sinh tham gia kỳ thi THPT Quốc gia tại các điểm thi được quy định.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">15/07/2024 - 20/07/2024</div>
+                        <div class="timeline-content">
+                            <h4>Công bố kết quả thi</h4>
+                            <p>Công bố kết quả thi THPT Quốc gia và thí sinh có thể điều chỉnh nguyện vọng xét tuyển.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">05/08/2024 - 10/08/2024</div>
+                        <div class="timeline-content">
+                            <h4>Công bố kết quả trúng tuyển</h4>
+                            <p>Công bố danh sách thí sinh trúng tuyển vào các ngành học của trường.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">15/08/2024 - 31/08/2024</div>
+                        <div class="timeline-content">
+                            <h4>Nhập học</h4>
+                            <p>Thí sinh trúng tuyển làm thủ tục nhập học và đóng học phí.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="admission-requirements">
+                <h3>ĐIỀU KIỆN XÉT TUYỂN</h3>
+                <div class="requirement-card">
+                    <h4><i class="fas fa-graduation-cap"></i> Phương thức xét tuyển</h4>
+                    <ul>
+                        <li>Xét tuyển dựa trên kết quả kỳ thi THPT Quốc gia</li>
+                        <li>Xét tuyển dựa trên học bạ THPT (Học sinh có điểm trung bình 3 năm THPT từ 8.0 trở lên)</li>
+                        <li>Xét tuyển thẳng đối với thí sinh đạt giải trong các kỳ thi học sinh giỏi quốc gia</li>
+                        <li>Xét tuyển kết hợp (Đánh giá năng lực + Phỏng vấn)</li>
+                    </ul>
+                </div>
+                <div class="requirement-card">
+                    <h4><i class="fas fa-file-alt"></i> Hồ sơ đăng ký</h4>
+                    <ul>
+                        <li>Phiếu đăng ký xét tuyển (theo mẫu của Trường)</li>
+                        <li>Bản sao công chứng học bạ THPT</li>
+                        <li>Bản sao công chứng bằng tốt nghiệp THPT hoặc giấy chứng nhận tốt nghiệp tạm thời</li>
+                        <li>Bản sao công chứng giấy khai sinh</li>
+                        <li>Giấy chứng nhận ưu tiên (nếu có)</li>
+                        <li>02 ảnh 3x4 chụp trong vòng 6 tháng</li>
+                    </ul>
+                </div>
+                <div class="requirement-card">
+                    <h4><i class="fas fa-coins"></i> Học phí & Học bổng</h4>
+                    <ul>
+                        <li>Học phí: 15-25 triệu đồng/năm tùy theo ngành học</li>
+                        <li>Học bổng toàn phần dành cho thí sinh đạt từ 27 điểm trở lên</li>
+                        <li>Học bổng bán phần (50% học phí) cho thí sinh đạt từ 25-26.9 điểm</li>
+                        <li>Học bổng khuyến khích học tập hàng kỳ dành cho sinh viên có kết quả học tập xuất sắc</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-section">
+            <h3>THÔNG TIN LIÊN HỆ</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Địa chỉ</h4>
+                        <p>Phòng Tuyển sinh - Tầng 1, Nhà A1<br>Trường Đại học Việt Nam<br>123 Đường Nguyễn Văn A, Quận 1, TP.HCM</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h4>Điện thoại</h4>
+                        <p>Hotline: 1900.1234<br>Phòng Tuyển sinh: 028.1234.5678</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>tuyensinh@university.edu.vn<br>info@university.edu.vn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h3>CÂU HỎI THƯỜNG GẶP</h3>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>Điểm chuẩn các ngành năm 2023 là bao nhiêu?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Điểm chuẩn các ngành năm 2023 dao động từ 22 đến 28 điểm tùy theo ngành học. Ngành Công nghệ thông tin: 26.5 điểm, Kế toán: 24.75 điểm, Quản trị kinh doanh: 24.95 điểm, Y đa khoa: 27.9 điểm.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>Khi nào có kết quả xét tuyển học bạ?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Kết quả xét tuyển học bạ sẽ được công bố sau 7-10 ngày kể từ ngày hết hạn nộp hồ sơ xét tuyển. Kết quả sẽ được gửi trực tiếp qua email đăng ký của thí sinh và đăng tải trên website chính thức của trường.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>Có thể đăng ký xét tuyển online không?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Có, thí sinh có thể đăng ký xét tuyển online qua website chính thức của trường tại mục "Đăng ký xét tuyển". Sau khi đăng ký online, thí sinh vẫn cần nộp hồ sơ giấy để xác nhận thông tin trong thời hạn quy định.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>Trường có ký túc xá cho sinh viên không?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Có, trường có ký túc xá hiện đại với sức chứa khoảng 3000 sinh viên. Ưu tiên bố trí chỗ ở cho sinh viên năm nhất và sinh viên có hoàn cảnh khó khăn. Chi phí ký túc xá dao động từ 350.000đ đến 850.000đ/tháng tùy theo loại phòng.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <div class="footer">
+        <p>Trường Đại học Việt Nam</p>
+        <p>Địa chỉ: 123 Đường Nguyễn Văn A, Quận 1, TP.HCM</p>
+        <p>Điện thoại: 028.1234.5678 | Email: info@university.edu.vn</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // FAQ toggle
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Animate elements on scroll
+        const animateOnScroll = () => {
+            const animationElements = document.querySelectorAll('.timeline, .admission-requirements, .contact-section, .faq-section');
+            
+            animationElements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if(elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animation
+        document.querySelectorAll('.timeline, .admission-requirements, .contact-section, .faq-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.8s ease-out';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html> 
